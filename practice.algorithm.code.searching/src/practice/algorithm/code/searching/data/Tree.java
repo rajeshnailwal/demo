@@ -37,14 +37,8 @@ public class Tree<E extends Comparable<E>> {
 			list.add(new Node<E>(data));
 		});
 		
-		
 		for(Node<E> node : list){
-			if(root == null){
-				root = node;
-				root.height = 0;
-			} else {
-				
-			}
+			root = addNodeInBST(root, node);
 		}
 		
 		return root;
