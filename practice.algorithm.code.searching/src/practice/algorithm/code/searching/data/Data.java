@@ -10,4 +10,8 @@ public class Data<E extends Comparable<E>> {
 	public E getData(){
 		return data;
 	}
+	
+	public String toString(){
+		return data != null ? data.toString() : "null";
+	}
 }

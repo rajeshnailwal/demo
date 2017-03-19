@@ -10,4 +10,8 @@ public class Node<E extends Comparable<E>> {
 	public Node(Data<E> data){
 		this.data = data;
 	}
+	
+	public String toString(){
+		return "[left="+left+", node="+this+", right="+right+"]";
+	}
 }

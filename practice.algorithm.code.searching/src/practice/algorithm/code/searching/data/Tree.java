@@ -29,11 +29,11 @@ public class Tree<E extends Comparable<E>> {
 		return list.get(0);
 	}
 	
-	public Node<E> getBinraySearchTree(Data<E>[] arr) {
-		List<Node<E>> list = new ArrayList<Node<E>>(arr.length);
+	public Node<E> getBinraySearchTree(List<Data<E>> dataList) {
+		List<Node<E>> list = new ArrayList<Node<E>>(dataList.size());
 		Node<E> root = null;
 		
-		Arrays.stream(arr).forEach(data -> {
+		dataList.stream().forEach(data -> {
 			list.add(new Node<E>(data));
 		});
 		
@@ -89,7 +89,7 @@ public class Tree<E extends Comparable<E>> {
 					int rightHeight = balancerNode.right != null ? balancerNode.right.height : -1; 
 					
 					if(leftHeight - rightHeight >= 2){//left side is heavier
-						if(node.data.getData().compareTo(balancerNode.data.getData()) < -1){
+						if(node.data.getData().compareTo(balancerNode.data.getData()) < 0){
 							
 							//it means node has been added in left-left subtree of balancerNode
 							if(node.data.getData().compareTo(balancerNode.left.data.getData()) <= 0){
@@ -237,6 +237,30 @@ public class Tree<E extends Comparable<E>> {
 			}
 		}
 		return root;
+	}
+	
+	public void inorder(Node<E> node){
+		if(node != null){
+			System.out.println(node);
+			inorder(node.left);
+			inorder(node.right);
+		}
+	}
+	
+	public void preorder(Node<E> node){
+		if(node != null){
+			preorder(node.left);
+			System.out.println(node);
+			preorder(node.right);
+		}
+	}
+	
+	public void postorder(Node<E> node){
+		if(node != null){
+			postorder(node.left);
+			postorder(node.right);
+			System.out.println(node);
+		}
 	}
 	
 }
