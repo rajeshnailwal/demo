@@ -73,13 +73,172 @@ public class Tree<E extends Comparable<E>> {
 				}
 			}
 			
+			//if nd is not null it means 'node' to be inserted is already there in BST 
+			//else a position has been found where 'node' can be inserted 
 			if(nd == null){
 				if(node.data.getData().compareTo(parent.data.getData()) < 0){
 					parent.left = node;
-					node.height = stack.size();
+					node.height = 0;
 				} else if(node.data.getData().compareTo(parent.data.getData()) > 0){
 					parent.right = node;
-					node.height = stack.size();
+					node.height = 0;
+				}
+				
+				//balancerNode is a node where we check, whether the tree at this node (as root) is a balanced BST
+				Node<E> balancerNode = stack.pop();
+				
+				Node<E> temp = null;
+				
+				//balancing BST
+				while(balancerNode != null){
+					int leftHeight = balancerNode.left != null ? balancerNode.left.height : -1;
+					int rightHeight = balancerNode.right != null ? balancerNode.right.height : -1; 
+					
+					if(leftHeight - rightHeight >= 2){//left side is heavier
+						if(node.data.getData().compareTo(balancerNode.data.getData()) < -1){
+							
+							//it means node has been added in left-left subtree of balancerNode
+							if(node.data.getData().compareTo(balancerNode.left.data.getData()) <= 0){
+								//right rotate on position of balancer node 
+								temp = balancerNode.left;
+								balancerNode.left = temp.right;
+								temp.right = balancerNode;
+								
+								//reassign height of rotated nodes
+								leftHeight = temp.right.left != null ? temp.right.left.height : -1;
+								rightHeight = temp.right.right != null ? temp.right.right.height : -1;
+								temp.right.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+								
+								leftHeight = temp.left.left != null ? temp.left.left.height : -1;
+								rightHeight = temp.left.right != null ? temp.left.right.height : -1;
+								temp.left.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+								
+								temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
+								
+								
+								parent = stack.pop();
+								if(parent != null){
+									if(parent.left == balancerNode) parent.left = temp;
+									else if (parent.right == balancerNode) parent.right = temp;	
+									
+									balancerNode = parent;
+								} else {
+									root = temp;
+									break;
+								}
+								 
+							}
+							//it means node has been added in left-right(which was null) subtree of balancerNode
+							else if(node.data.getData().compareTo(balancerNode.left.data.getData()) >= 0){
+								//left rotate on position of balancer node's left child
+								temp = balancerNode.left.right;
+								balancerNode.left.right = temp.left;
+								temp.left = balancerNode.left;
+								balancerNode.left = temp;
+								
+								//right rotate on position of balancer node 
+								temp = balancerNode.left;
+								balancerNode.left = temp.right;
+								temp.right = balancerNode;
+								
+								//reassign height of rotated nodes
+								leftHeight = temp.right.left != null ? temp.right.left.height : -1;
+								rightHeight = temp.right.right != null ? temp.right.right.height : -1;
+								temp.right.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+								
+								leftHeight = temp.left.left != null ? temp.left.left.height : -1;
+								rightHeight = temp.left.right != null ? temp.left.right.height : -1;
+								temp.left.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+								
+								temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
+								
+								parent = stack.pop();
+								if(parent != null){
+									if(parent.left == balancerNode) parent.left = temp;
+									else if (parent.right == balancerNode) parent.right = temp;	
+									
+									balancerNode = parent;
+								} else {
+									root = temp;
+									break;
+								}
+							}
+						}
+					} else if(rightHeight - leftHeight >= 2){//right side is heavier
+						
+						//it means node has been added in right-right subtree of balancerNode
+						if(node.data.getData().compareTo(balancerNode.right.data.getData()) >= 0){
+							//left rotate on position of balancer node 
+							temp = balancerNode.right;
+							balancerNode.right = temp.left;
+							temp.left = balancerNode;
+							
+							//reassign height of rotated nodes
+							leftHeight = temp.right.left != null ? temp.right.left.height : -1;
+							rightHeight = temp.right.right != null ? temp.right.right.height : -1;
+							temp.right.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+							
+							leftHeight = temp.left.left != null ? temp.left.left.height : -1;
+							rightHeight = temp.left.right != null ? temp.left.right.height : -1;
+							temp.left.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+							
+							temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
+							
+							parent = stack.pop();
+							if(parent != null){
+								if(parent.left == balancerNode) parent.left = temp;
+								else if (parent.right == balancerNode) parent.right = temp;	
+								
+								balancerNode = parent;
+							} else {
+								root = temp;
+								break;
+							}
+						}
+						//it means node has been added in right-left subtree of balancerNode
+						else if(node.data.getData().compareTo(balancerNode.right.data.getData()) <= 0){
+							//right rotate on position of balancer node's right child
+							temp = balancerNode.right.left;
+							balancerNode.right.left = temp.right;
+							temp.right = balancerNode.right;
+							balancerNode.right = temp;
+							
+							//left rotate on position of balancer node 
+							temp = balancerNode.right;
+							balancerNode.right = temp.left;
+							temp.left = balancerNode;
+							
+							//reassign height of rotated nodes
+							leftHeight = temp.right.left != null ? temp.right.left.height : -1;
+							rightHeight = temp.right.right != null ? temp.right.right.height : -1;
+							temp.right.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+							
+							leftHeight = temp.left.left != null ? temp.left.left.height : -1;
+							rightHeight = temp.left.right != null ? temp.left.right.height : -1;
+							temp.left.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+							
+							temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
+							
+							parent = stack.pop();
+							if(parent != null){
+								if(parent.left == balancerNode) parent.left = temp;
+								else if (parent.right == balancerNode) parent.right = temp;	
+								
+								balancerNode = parent;
+							} else {
+								root = temp;
+								break;
+							}
+						}
+					} else {
+						//reassign height
+						leftHeight = temp.left != null ? temp.left.height : -1;
+						rightHeight = temp.right != null ? temp.right.height : -1;
+						balancerNode.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+						
+						//set balancer node for next iteration
+						balancerNode = stack.pop();
+					}	
 				}
 			}
 		}
