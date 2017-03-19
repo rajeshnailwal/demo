@@ -26,6 +26,7 @@ public class BinarySearch<E extends Comparable<E>> {
 		System.out.println("Data List : "+list);
 		
 		Node<Integer> root = new Tree<Integer>().getBinraySearchTree(list);
+		new Tree<Integer>().inorder(root, 0);
 		Node<Integer> node = new BinarySearch<Integer>().search(root, new Data<Integer>(567));
 		System.out.println("Node found "+node);
 	}

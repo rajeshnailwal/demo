@@ -265,7 +265,7 @@ public class Tree<E extends Comparable<E>> {
 	public void inorder(Node<E> node, int level){
 		if(node != null){
 			int newLevel = level + 1;
-			System.out.println(node + Integer.toString(level));
+			System.out.println(node + " * [Level = "+Integer.toString(level)+"]");
 			inorder(node.left, newLevel);
 			inorder(node.right, newLevel);
 		}
@@ -275,7 +275,7 @@ public class Tree<E extends Comparable<E>> {
 		if(node != null){
 			int newLevel = level + 1;
 			preorder(node.left, newLevel);
-			System.out.println(node + Integer.toString(level));
+			System.out.println(node + " * [Level = "+Integer.toString(level)+"]");
 			preorder(node.right, newLevel);
 		}
 	}
