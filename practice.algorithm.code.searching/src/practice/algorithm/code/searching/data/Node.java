@@ -12,6 +12,6 @@ public class Node<E extends Comparable<E>> {
 	}
 	
 	public String toString(){
-		return "[left="+left+", node="+this+", right="+right+"]";
+		return "[left="+(left != null ? left.data.toString() : "null") +", node="+this.data.toString()+", right="+(right != null ? right.data.toString() : "null") +"]";
 	}
 }

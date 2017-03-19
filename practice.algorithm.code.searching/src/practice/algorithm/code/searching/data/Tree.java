@@ -109,8 +109,12 @@ public class Tree<E extends Comparable<E>> {
 								
 								temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
 								
+								if(stack.size() > 0) {
+									parent = stack.pop();
+								} else {
+									parent = null;
+								}
 								
-								parent = stack.pop();
 								if(parent != null){
 									if(parent.left == balancerNode) parent.left = temp;
 									else if (parent.right == balancerNode) parent.right = temp;	
@@ -146,7 +150,12 @@ public class Tree<E extends Comparable<E>> {
 								
 								temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
 								
-								parent = stack.pop();
+								if(stack.size() > 0){
+									parent = stack.pop();
+								} else {
+									parent = null;
+								}
+								
 								if(parent != null){
 									if(parent.left == balancerNode) parent.left = temp;
 									else if (parent.right == balancerNode) parent.right = temp;	
@@ -178,7 +187,12 @@ public class Tree<E extends Comparable<E>> {
 							
 							temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
 							
-							parent = stack.pop();
+							if(stack.size() > 0) {
+								parent = stack.pop();
+							} else {
+								parent = null;
+							}
+							
 							if(parent != null){
 								if(parent.left == balancerNode) parent.left = temp;
 								else if (parent.right == balancerNode) parent.right = temp;	
@@ -213,7 +227,12 @@ public class Tree<E extends Comparable<E>> {
 							
 							temp.height = temp.right.height > temp.left.height ? temp.right.height + 1 : temp.left.height + 1;
 							
-							parent = stack.pop();
+							if(stack.size() > 0){
+								parent = stack.pop();
+							} else {
+								parent = null;
+							}
+							
 							if(parent != null){
 								if(parent.left == balancerNode) parent.left = temp;
 								else if (parent.right == balancerNode) parent.right = temp;	
@@ -226,12 +245,16 @@ public class Tree<E extends Comparable<E>> {
 						}
 					} else {
 						//reassign height
-						leftHeight = temp.left != null ? temp.left.height : -1;
-						rightHeight = temp.right != null ? temp.right.height : -1;
+						leftHeight = balancerNode.left != null ? balancerNode.left.height : -1;
+						rightHeight = balancerNode.right != null ? balancerNode.right.height : -1;
 						balancerNode.height = leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
 						
 						//set balancer node for next iteration
-						balancerNode = stack.pop();
+						if(stack.size() > 0){
+							balancerNode = stack.pop();
+						} else {
+							balancerNode = null;
+						}
 					}	
 				}
 			}
@@ -239,27 +262,30 @@ public class Tree<E extends Comparable<E>> {
 		return root;
 	}
 	
-	public void inorder(Node<E> node){
+	public void inorder(Node<E> node, int level){
 		if(node != null){
-			System.out.println(node);
-			inorder(node.left);
-			inorder(node.right);
+			int newLevel = level + 1;
+			System.out.println(node + Integer.toString(level));
+			inorder(node.left, newLevel);
+			inorder(node.right, newLevel);
 		}
 	}
 	
-	public void preorder(Node<E> node){
+	public void preorder(Node<E> node, int level){
 		if(node != null){
-			preorder(node.left);
-			System.out.println(node);
-			preorder(node.right);
+			int newLevel = level + 1;
+			preorder(node.left, newLevel);
+			System.out.println(node + Integer.toString(level));
+			preorder(node.right, newLevel);
 		}
 	}
 	
-	public void postorder(Node<E> node){
+	public void postorder(Node<E> node, int level){
 		if(node != null){
-			postorder(node.left);
-			postorder(node.right);
-			System.out.println(node);
+			int newLevel = level + 1;
+			postorder(node.left, newLevel);
+			postorder(node.right, newLevel);
+			System.out.println(node + " * [Level = "+Integer.toString(level)+"]");
 		}
 	}
 	
