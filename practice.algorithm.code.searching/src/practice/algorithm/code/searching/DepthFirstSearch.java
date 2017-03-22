@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 import practice.algorithm.code.searching.data.Data;
-import practice.algorithm.code.searching.data.Node;
+import practice.algorithm.code.searching.data.TreeNode;
 import practice.algorithm.code.searching.data.Tree;
 
 public class DepthFirstSearch<E extends Comparable<E>> {
@@ -39,15 +39,15 @@ public class DepthFirstSearch<E extends Comparable<E>> {
 			}
 		};
 		
-		Node<Integer> root = new Tree<Integer>().getCompleteBinaryTree(data.toArray(new Data[data.size()]));
+		TreeNode<Integer> root = new Tree<Integer>().getCompleteBinaryTree(data.toArray(new Data[data.size()]));
 		
-		Node<Integer> found = new DepthFirstSearch<Integer>().search(root, new Data<Integer>(98));
+		TreeNode<Integer> found = new DepthFirstSearch<Integer>().search(root, new Data<Integer>(98));
 	}
 	
-	public Node<E> search(Node<E> root, Data<E> searchData){
-		Stack<Node<E>> stack = new Stack<Node<E>>();
+	public TreeNode<E> search(TreeNode<E> root, Data<E> searchData){
+		Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
 		
-		Node<E> node = root, result = null;
+		TreeNode<E> node = root, result = null;
 		stack.push(root);
 		
 		while((node = stack.pop()) != null){

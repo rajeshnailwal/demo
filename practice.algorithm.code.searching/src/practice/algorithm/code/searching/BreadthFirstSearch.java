@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import practice.algorithm.code.searching.data.Data;
-import practice.algorithm.code.searching.data.Node;
+import practice.algorithm.code.searching.data.TreeNode;
 import practice.algorithm.code.searching.data.Tree;
 
 public class BreadthFirstSearch<E extends Comparable<E>> {
@@ -40,15 +40,15 @@ public class BreadthFirstSearch<E extends Comparable<E>> {
 			}
 		};
 		
-		Node<Integer> root = new Tree<Integer>().getCompleteBinaryTree(data.toArray(new Data[data.size()]));
+		TreeNode<Integer> root = new Tree<Integer>().getCompleteBinaryTree(data.toArray(new Data[data.size()]));
 		
 		new BreadthFirstSearch<Integer>().search(root, new Data<Integer>(98));
 	}
 	
-	public Node<E> search(Node<E> root, Data<E> searchData){
-		Node<E> node = root, result = null;
+	public TreeNode<E> search(TreeNode<E> root, Data<E> searchData){
+		TreeNode<E> node = root, result = null;
 		
-		Queue<Node<E>> queue = new LinkedList<Node<E>>();
+		Queue<TreeNode<E>> queue = new LinkedList<TreeNode<E>>();
 		queue.offer(node);
 		
 		while((node = queue.poll()) != null){

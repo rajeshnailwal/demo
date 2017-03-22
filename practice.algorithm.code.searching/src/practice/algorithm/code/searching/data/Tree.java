@@ -7,12 +7,12 @@ import java.util.Stack;
 
 public class Tree<E extends Comparable<E>> {
 	
-	public Node<E> getCompleteBinaryTree(Data<E>[] arr) {
-		List<Node<E>> list = new ArrayList<Node<E>>(arr.length);
-		Node<E> node = null;
+	public TreeNode<E> getCompleteBinaryTree(Data<E>[] arr) {
+		List<TreeNode<E>> list = new ArrayList<TreeNode<E>>(arr.length);
+		TreeNode<E> node = null;
 		
 		Arrays.stream(arr).forEach(data -> {
-			list.add(new Node<E>(data));
+			list.add(new TreeNode<E>(data));
 		});
 		
 		int left = -1, right = -1;
@@ -29,30 +29,30 @@ public class Tree<E extends Comparable<E>> {
 		return list.get(0);
 	}
 	
-	public Node<E> getBinraySearchTree(List<Data<E>> dataList) {
-		List<Node<E>> list = new ArrayList<Node<E>>(dataList.size());
-		Node<E> root = null;
+	public TreeNode<E> getBinraySearchTree(List<Data<E>> dataList) {
+		List<TreeNode<E>> list = new ArrayList<TreeNode<E>>(dataList.size());
+		TreeNode<E> root = null;
 		
 		dataList.stream().forEach(data -> {
-			list.add(new Node<E>(data));
+			list.add(new TreeNode<E>(data));
 		});
 		
-		for(Node<E> node : list){
+		for(TreeNode<E> node : list){
 			root = addNodeInBST(root, node);
 		}
 		
 		return root;
 	}
 	
-	public Node<E> addNodeInBST(Node<E> root, Node<E> node){
+	public TreeNode<E> addNodeInBST(TreeNode<E> root, TreeNode<E> node){
 		if(root == null){
 			root = node;
 			root.height = 0;
 		} else {
-			Node<E> nd = root;
-			Node<E> parent = null;
+			TreeNode<E> nd = root;
+			TreeNode<E> parent = null;
 			
-			Stack<Node<E>> stack = new Stack<Node<E>>();
+			Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
 			
 			while(nd != null){
 				stack.push(nd);
@@ -79,9 +79,9 @@ public class Tree<E extends Comparable<E>> {
 				}
 				
 				//balancerNode is a node where we check, whether the tree at this node (as root) is a balanced BST
-				Node<E> balancerNode = stack.pop();
+				TreeNode<E> balancerNode = stack.pop();
 				
-				Node<E> temp = null;
+				TreeNode<E> temp = null;
 				
 				//balancing BST
 				while(balancerNode != null){
@@ -262,7 +262,7 @@ public class Tree<E extends Comparable<E>> {
 		return root;
 	}
 	
-	public void inorder(Node<E> node, int level){
+	public void inorder(TreeNode<E> node, int level){
 		if(node != null){
 			int newLevel = level + 1;
 			System.out.println(node + " * [Level = "+Integer.toString(level)+"]");
@@ -271,7 +271,7 @@ public class Tree<E extends Comparable<E>> {
 		}
 	}
 	
-	public void preorder(Node<E> node, int level){
+	public void preorder(TreeNode<E> node, int level){
 		if(node != null){
 			int newLevel = level + 1;
 			preorder(node.left, newLevel);
@@ -280,7 +280,7 @@ public class Tree<E extends Comparable<E>> {
 		}
 	}
 	
-	public void postorder(Node<E> node, int level){
+	public void postorder(TreeNode<E> node, int level){
 		if(node != null){
 			int newLevel = level + 1;
 			postorder(node.left, newLevel);
