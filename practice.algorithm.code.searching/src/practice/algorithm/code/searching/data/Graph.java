@@ -20,7 +20,30 @@ public class Graph<E extends Comparable<E>> {
 		return graph;
 	}
 	
-	public List<GraphNode<E>> getDummyGraph(){
+	public List<GraphNode<E>> getDummyGraphWithDistancesBetweenNodes(){
+		
+		//				 F
+		//				/|\
+		//			   / | \
+		//			 5/  |  \4
+		//			 /   |   \
+		//			/    |    \
+		//		   B     |7    I
+		//		  /|\    |    / \
+		//		 / | \5  |   /   \
+		//	   8/  |5 \  |  /2    \1
+		// 	   /   |   E | /       \
+		//	  /  7 |   3\|/         \
+		//	A -----C---- J           L
+		//    \    |  9 / \1         |6
+		//	   \   |   /8  \    5    |
+		//	   6\  |4 G-----K--------M
+		//		 \ | /|  9
+		//		  \|/3|
+		//		   D  |1
+		//			\ |
+		//			2\|
+		//			  H
 		List<GraphEdge<E>> edges = new ArrayList<GraphEdge<E>>(){
 			{
 				GraphNode<E> nodeA = new GraphNode<E>("A", null);
