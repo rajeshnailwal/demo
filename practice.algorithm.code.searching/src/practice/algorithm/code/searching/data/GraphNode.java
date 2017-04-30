@@ -27,6 +27,12 @@ public class GraphNode<E extends Comparable<E>> {
 		this.data = data;
 	}	
 	
+	public GraphNode(String name, Data<E> data, Object additionalInfo){
+		this.name = name;
+		this.data = data;
+		this.additionalInfo = additionalInfo;
+	}
+	
 	public int hashCode(){
 		return name != null ? name.hashCode() : 0;
 	}

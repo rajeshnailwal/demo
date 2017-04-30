@@ -48,5 +48,7 @@ public class BinarySearch<E extends Comparable<E>> {
 		
 		return node;
 	}
+	
+	
 
 }

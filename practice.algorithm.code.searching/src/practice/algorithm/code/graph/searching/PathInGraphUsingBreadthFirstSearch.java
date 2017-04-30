@@ -11,34 +11,43 @@ import practice.algorithm.code.searching.data.GraphNode;
 public class PathInGraphUsingBreadthFirstSearch {
 	
 	public static void main(String...strings){		
-		List<GraphNode<Integer>> graph = new Graph<Integer>().getDummyGraph();
+		List<GraphNode> graph = new Graph().getDummyGraphWithDistancesBetweenNodes();
 		System.out.println(graph);
+		
+		List<GraphNode> path = search(graph, "L");
+		
+		System.out.println(path);
 	}
 	
-	public static List<GraphNode<Integer>> search(List<GraphNode<Integer>> graph, String name){
+	public static List<GraphNode> search(List<GraphNode> graph, String name){
 		GraphNode<Integer> node = graph.get(0);
 		
-		List<GraphNode<Integer>> list = new ArrayList<GraphNode<Integer>>();
+		List<GraphNode> list = new ArrayList<GraphNode>();
 		list.add(node);
 		
 		if(node.name.equals(name)){
 			return list;
 		} else {
-			Queue<List<GraphNode<Integer>>> queue = new LinkedList<List<GraphNode<Integer>>>();
+			Queue<List<GraphNode>> queue = new LinkedList<List<GraphNode>>();
 			queue.offer(list);
 		
 			while(queue.size() > 0 && (list = queue.poll()) != null){
 				
-				List<GraphNode<Integer>> adjacentNodes = list.get(list.size() - 1).adjacentNodes;				
+				List<GraphNode> adjacentNodes = list.get(list.size() - 1).adjacentNodes;				
 				
 				if(adjacentNodes != null && adjacentNodes.size() > 0){
-					for(GraphNode<Integer> gn : adjacentNodes){
-						List<GraphNode<Integer>> ls = new ArrayList<GraphNode<Integer>>(list);
-						ls.add(gn);
-						if(gn.name.equals(name)){
-							return ls;
-						} else {
-							queue.offer(ls);
+					for(GraphNode gn : adjacentNodes){
+						List<GraphNode> ls = new ArrayList<GraphNode>(list);
+						
+						if(!ls.contains(gn)){
+							
+							ls.add(gn);
+							
+							if(gn.name.equals(name)){
+								return ls;
+							} else {
+								queue.offer(ls);
+							}
 						}
 					}	
 				}
