@@ -1,0 +1,12 @@
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\IRemoteJobObjectStore.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\bo\IObject.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\IJob.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\ParallelJobAdapter.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\ParallelJob.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\ITask.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\ApplicationLauncher.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\SequentialJob.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\bo\IWSBusinessObject.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\api\jobs\SequentialJobAdapter.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\bo\WSBusinessObject.java
+C:\Development\eclipse_neon\workspace\com.pune.hyatt.ms.remote.api\src\main\java\com\pune\hyatt\ms\remote\bo\WSBusinessObjectGroup.java

@@ -1,0 +1,12 @@
+1	501	suresh
+1	502	ramesh
+2	503	atul
+1	504	prabhu
+2	505	tabbu
+2	506	ranu
+1	507	sabbo
+501	508	karamati
+501	509	sharbati
+2	510	lionsingh
+1	511	giraffekumar
+1	2	ulluchaudhary

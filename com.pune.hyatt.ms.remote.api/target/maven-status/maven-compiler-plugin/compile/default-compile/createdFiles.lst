@@ -1,0 +1,12 @@
+com\pune\hyatt\ms\remote\api\jobs\ParallelJobAdapter.class
+com\pune\hyatt\ms\remote\api\jobs\ITask.class
+com\pune\hyatt\ms\remote\api\jobs\ParallelJob.class
+com\pune\hyatt\ms\remote\ApplicationLauncher.class
+com\pune\hyatt\ms\remote\api\jobs\SequentialJobAdapter.class
+com\pune\hyatt\ms\remote\bo\WSBusinessObject.class
+com\pune\hyatt\ms\remote\bo\IObject.class
+com\pune\hyatt\ms\remote\bo\IWSBusinessObject.class
+com\pune\hyatt\ms\remote\bo\WSBusinessObjectGroup.class
+com\pune\hyatt\ms\remote\api\IRemoteJobObjectStore.class
+com\pune\hyatt\ms\remote\api\jobs\IJob.class
+com\pune\hyatt\ms\remote\api\jobs\SequentialJob.class
