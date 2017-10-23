@@ -1,0 +1,3 @@
+grant codeBase "file:/C:/Development/eclipse_neon/workspace/rmi/-" {
+    permission java.security.AllPermission;
+};
